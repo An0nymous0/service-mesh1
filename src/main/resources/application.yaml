@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: service-mesh1
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  http:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8
+    converters:
+      preferred-json-mapper: jackson
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+server:
+  servlet:
+    context-path: /service-mesh1
+logging:
+  path: logs

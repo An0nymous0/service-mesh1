@@ -1,0 +1,42 @@
+##################################################################################################
+# Details service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-mesh1
+  labels:
+    app: service-mesh1
+    service: service-mesh1
+spec:
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: service-mesh1
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: service-mesh1-v1
+  labels:
+    app: service-mesh1
+    version: v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-mesh1
+        version: v1
+    spec:
+      containers:
+        - name: service-mesh1
+          image: com.demo-service-mesh1:latest
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Xmx512m -Xms512m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Djava.security.egd=file:/dev/./urandom -Duser.timezone=GMT+08 -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8 -Duser.timezone=Asia/Shanghai"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+---
