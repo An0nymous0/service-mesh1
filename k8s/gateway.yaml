@@ -13,30 +13,30 @@ spec:
       hosts:
         - "*"
 ---
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: service-mesh
-spec:
-  hosts:
-    - "*"
-  gateways:
-    - service-mesh-gateway
-  http:
-    - match:
-        - uri:
-            prefix: /service-mesh1
-      route:
-        - destination:
-            host: service-mesh1
-            port:
-              number: 8080
-    - match:
-        - uri:
-            prefix: /service-mesh2
-      route:
-        - destination:
-            host: service-mesh2
-            port:
-              number: 8081
+#apiVersion: networking.istio.io/v1alpha3
+#kind: VirtualService
+#metadata:
+#  name: service-mesh
+#spec:
+#  hosts:
+#    - "*"
+#  gateways:
+#    - service-mesh-gateway
+#  http:
+#    - match:
+#        - uri:
+#            prefix: /service-mesh1
+#      route:
+#        - destination:
+#            host: service-mesh1
+#            port:
+#              number: 8080
+#    - match:
+#        - uri:
+#            prefix: /service-mesh2
+#      route:
+#        - destination:
+#            host: service-mesh2
+#            port:
+#              number: 8081
 
